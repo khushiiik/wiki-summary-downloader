@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia Explanation</title>
+    <link rel="stylesheet" href="{% static 'wiki.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="header">
+                <img src="{% static 'imgs/wikipedia.png' %}" alt="Wikipedia Logo" class="logo">
+            </div>
+            <div class="search-bar">
+                <form action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="search" placeholder="Search..." class="search-input">
+                    <button class="search-button">
+                        <img src="{% static 'imgs/search.svg' %}" alt="Search Icon">
+                    </button>
+                </form>
+            </div>
+         <br>
+            {% if summary %}
+            <a href="{% url 'download_summary' filename %}">
+                <div class="download">
+                    <p>Download</p>
+                    <div class="cir">
+                        <img src="{% static 'imgs/download.svg' %}" alt="Download">
+                    </div>
+                </div>
+            </a>
+  
+        {% endif %}
+        
+
+        
+        
+        </div>
+    </div>
+</body>
+</html>
